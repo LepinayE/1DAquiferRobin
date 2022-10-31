@@ -56,7 +56,7 @@
 %--------------------------------------------------------------------------
 % Author: Emma Lepinay
 % Email: el547@cam.ac.uk
-% Date: 18/10/2022; Last revision: ---
+% Date: 18/10/2022; Last revision: 31/10/2021
 % Version: R2022a
 
 addpath '/Users/lepinay/Desktop/Aquifer Matlab'/FluxbcStepAquifer
@@ -151,8 +151,11 @@ totalFluxout = (b/2)* totalFluxout;
 % Internal Energy of Aquifer
 
 % Thermal Energy in fracture
-fracEnergy =  sum (Tf); % Vector of sum of temp at each time step
+fracEnergy = Tf;
+fracEnergy(1,:) = 0;
+fracEnergy =  sum (fracEnergy); % Vector of sum of temp at each time step
 fracEnergy = row * cp * ((b/2)^3)* U0* (1/K_r) * results.dX * fracEnergy;
+
 
 % Thermal Energy in rock
 rockEnergy = sum(Tr, [1 2]);% Sum over the X and Y variables
@@ -170,8 +173,7 @@ rockEnergy = row * cp * ((b/2)^3)* U0* (1/K_r)*results.dX * results.dY* ...
 % Internal Energy at each time k
 intEnergy =  fracEnergy + rockEnergy; % + originalIntEnergy
  % J
-intEnergy2 = zeros( 1, length(time) +1);
-intEnergy2(2:end) = intEnergy;
+
 %-------------
 %%
 % Heat Ratio, each time step
@@ -262,10 +264,14 @@ hold on
 plot(time, totalFluxout)
 hold on 
 plot(time,intEnergy)
+hold on 
+plot(time, fracEnergy)
+hold on 
+plot(time, rockEnergy)
 
 ylabel('Energy of Aquifer (J)')
 xlabel('Time (yrs)')
-legend ('Total Flux in', 'Total Flux out', 'Internal Energy', 'Location',...
+legend ('Total Flux in', 'Total Flux out', 'Internal Energy','Int Fracture Energy','Int Rock Energy', 'Location',...
             'northeastoutside')
 grid on
 

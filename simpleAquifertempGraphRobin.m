@@ -49,7 +49,7 @@
 %--------------------------------------------------------------------------
 % Author: Emma Lepinay
 % Email: el547@cam.ac.uk
-% Date: 09/09/2022; Last revision: 20/09/2022
+% Date: 09/09/2022; Last revision: 31/09/2022
 % Version: R2022a
 
 addpath '/Users/lepinay/Desktop/Aquifer Matlab'/FluxbcStepAquifer

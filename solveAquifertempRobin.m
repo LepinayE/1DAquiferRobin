@@ -93,7 +93,7 @@ function [results] = solveAquifertempRobin(K_d,ncyc,years,K_r, U0, b)
 %--------------------------------------------------------------------------
 % Author: Emma Lepinay
 % Email: el547@cam.ac.uk
-% Date: 14/10/2022; Last revision: 21/10/2022
+% Date: 14/10/2022; Last revision: 31/10/2022
 % Version: R2022a
 
 addpath '/Users/lepinay/Desktop/Aquifer Matlab'/FluxbcStepAquifer
@@ -106,14 +106,14 @@ addpath '/Users/lepinay/Desktop/Aquifer Matlab'/FluxbcStepAquifer
     %-------------
     % Vertical height of domain
     LY = 6; %12 % Non-dim length of cap rock cap
-    NY = 251; % Number of elements
+    NY = 351; % Number of elements
     Y_vec = linspace(0, LY, NY);  % Discretise Yspace starting from 0 ...
     %       and incrementing to Ly with length of vector Ny (LY/(NY -1))
     dY = Y_vec(2) - Y_vec(1); % Concequence of linspace 
     
     % Horizontal length of domain
     LX = 3; %6 % Non-dim length of fracture
-    NX = 251;  % Number of elements
+    NX = 351;  % Number of elements
     X_vec = linspace(0, LX, NX);  % Discretise Xspace starting from 0 ...
     %                       and incrementing to Lx with length of vector Nx
     dX = X_vec(2) -X_vec(1); 
